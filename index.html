@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Wash | Estética Automotiva Premium</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#00d4ff',
+                        secondary: '#111111',
+                        accent: '#ff003c',
+                        surface: '#1a1a1a',
+                        dark: '#000000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        #progress-container {
+            width: 100%;
+            height: 4px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background: transparent;
+        }
+        #progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #005bea);
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00d4ff;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -10px rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .img-loader {
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .bg-texture-lines {
+            background-color: #111111;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.03) 10px,
+                rgba(255, 255, 255, 0.03) 11px
+            );
+        }
+
+        .bg-texture-grid {
+            background-color: #000000;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .bg-texture-dots {
+            background-color: #1a1a1a;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+
+        .bg-texture-carbon {
+            background-color: #050505;
+            background-image: 
+                linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111),
+                linear-gradient(45deg, #111 25%, transparent 25%, transparent 75%, #111 75%, #111);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+        }
+
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden font-sans">
+
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-800 shadow-lg transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-tech font-bold tracking-wider text-white">
+                CAR <span class="text-primary">WASH</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="text-gray-300 hover:text-primary transition-colors text-sm uppercase tracking-widest font-semibold">Início</a>
+                <a href="#catalogo" class="text-gray-300 hover:text-primary transition-colors text-sm uppercase tracking-widest font-semibold">Serviços</a>
+                <a href="#galeria" class="text-gray-300 hover:text-primary transition-colors text-sm uppercase tracking-widest font-semibold">Galeria</a>
+                <a href="#agendamento" class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-all btn-glow shadow-[0_0_15px_rgba(0,212,255,0.3)]">Agendar</a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-black border-b border-gray-800 p-4 flex flex-col space-y-4 text-center shadow-lg">
+            <a href="#home" class="block py-2 text-gray-300 hover:text-primary font-semibold">Início</a>
+            <a href="#catalogo" class="block py-2 text-gray-300 hover:text-primary font-semibold">Serviços</a>
+            <a href="#galeria" class="block py-2 text-gray-300 hover:text-primary font-semibold">Galeria</a>
+            <a href="#agendamento" class="block py-2 text-primary font-bold">Agendar Agora</a>
+        </div>
+    </nav>
+
+    <header id="home" class="relative h-screen flex items-center justify-center parallax" 
+        style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop');">
+        
+        <div class="text-center px-4 reveal">
+            <h2 class="text-primary font-bold tracking-widest mb-4 uppercase text-sm md:text-base bg-black/30 backdrop-blur-sm inline-block px-4 py-1 rounded-full border border-primary/20">Estética Automotiva de Alto Padrão</h2>
+            <h1 class="text-5xl md:text-7xl font-tech font-bold mb-6 leading-tight text-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+                Seu Carro Merece <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">Perfeição</span>
+            </h1>
+            <p class="text-gray-300 max-w-2xl mx-auto mb-10 text-lg font-medium drop-shadow-md">
+                Tecnologia de ponta e produtos premium para transformar o visual do seu veículo. Lavagem detalhada, polimento e proteção cerâmica.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#catalogo" class="px-8 py-4 bg-transparent border border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all shadow-lg">
+                    Ver Catálogo
+                </a>
+                <a href="#agendamento" class="px-8 py-4 bg-primary text-black font-bold uppercase tracking-wider hover:bg-white transition-all btn-glow shadow-lg shadow-primary/20">
+                    Fazer Orçamento
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 animate-bounce text-primary text-2xl drop-shadow-md">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <section class="py-12 bg-texture-lines border-y border-gray-800 shadow-sm">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="reveal">
+                <h3 class="text-4xl font-tech font-bold text-white">5k+</h3>
+                <p class="text-gray-400 text-sm mt-2 uppercase font-semibold">Carros Atendidos</p>
+            </div>
+            <div class="reveal" style="transition-delay: 100ms;">
+                <h3 class="text-4xl font-tech font-bold text-primary">8</h3>
+                <p class="text-gray-400 text-sm mt-2 uppercase font-semibold">Anos de Mercado</p>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms;">
+                <h3 class="text-4xl font-tech font-bold text-white">100%</h3>
+                <p class="text-gray-400 text-sm mt-2 uppercase font-semibold">Satisfação</p>
+            </div>
+            <div class="reveal" style="transition-delay: 300ms;">
+                <h3 class="text-4xl font-tech font-bold text-primary">PRO</h3>
+                <p class="text-gray-400 text-sm mt-2 uppercase font-semibold">Certificados</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogo" class="py-24 bg-texture-grid relative border-t border-gray-900">
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm">O que fazemos</span>
+                <h2 class="text-4xl md:text-5xl font-tech font-bold mt-2 text-white">Catálogo de Serviços</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-shower"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Lavagem Detalhada</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Limpeza profunda de pintura, caixas de roda, emblemas e cantos. Uso de shampoos neutros e luvas de microfibra.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Pré-lavagem Snow Foam</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Descontaminação ferrosa</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Secagem sem atrito</li>
+                    </ul>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <span class="text-2xl font-bold text-white">R$ 120<small class="text-sm text-gray-500">,00</small></span>
+                        <button onclick="selectService('Lavagem Detalhada')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Polimento Técnico</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Correção da pintura removendo riscos, swirls e hologramas. Devolve o brilho profundo de showroom.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Análise de espessura</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Corte, refino e lustro</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Proteção selante</li>
+                    </ul>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <span class="text-2xl font-bold text-white">R$ 450<small class="text-sm text-gray-500">,00</small></span>
+                        <button onclick="selectService('Polimento Técnico')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                <div class="service-card bg-gradient-to-br from-surface to-blue-900/20 p-8 rounded-xl border border-primary/30 transition-all duration-300 reveal shadow-lg" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 right-0 bg-primary text-black text-xs font-bold px-3 py-1 rounded-bl-lg uppercase shadow-sm">Mais Popular</div>
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700 shadow-lg shadow-primary/10">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Vitrificação 9H</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">A proteção máxima para seu veículo. Camada cerâmica que protege contra raios UV, dejetos e riscos.</p>
+                    <ul class="text-sm text-gray-300 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Durabilidade de até 3 anos</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Hidrofobia extrema</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Facilidade de limpeza</li>
+                    </ul>
+                    <div class="flex justify-between items-center border-t border-gray-700 pt-6">
+                        <span class="text-2xl font-bold text-primary">R$ 890<small class="text-sm text-gray-400">,00</small></span>
+                        <button onclick="selectService('Vitrificação 9H')" class="bg-primary text-black px-4 py-2 rounded-md hover:bg-white font-bold text-sm uppercase transition-all shadow-[0_0_10px_rgba(0,212,255,0.4)]">Selecionar</button>
+                    </div>
+                </div>
+
+                <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Higienização Interna</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Limpeza e hidratação de bancos de couro, higienização de tecidos, teto e carpetes com vapor.</p>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <span class="text-2xl font-bold text-white">R$ 300<small class="text-sm text-gray-500">,00</small></span>
+                        <button onclick="selectService('Higienização Interna')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Oxi-Sanitização</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Eliminação de odores (cigarro, mofo) e microrganismos através de gerador de ozônio.</p>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <span class="text-2xl font-bold text-white">R$ 150<small class="text-sm text-gray-500">,00</small></span>
+                        <button onclick="selectService('Oxi-Sanitização')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Estética de Motor</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Limpeza técnica do cofre do motor sem uso de água sob alta pressão, com proteção de plásticos e borrachas.</p>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <span class="text-2xl font-bold text-white">R$ 180<small class="text-sm text-gray-500">,00</small></span>
+                        <button onclick="selectService('Estética de Motor')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-24 bg-texture-dots border-t border-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <span class="text-primary font-bold tracking-widest uppercase text-sm">Portfolio</span>
+                    <h2 class="text-4xl md:text-5xl font-tech font-bold mt-2 text-white">Nossos Resultados</h2>
+                </div>
+                <p class="text-gray-400 max-w-md mt-4 md:mt-0 md:text-right">Confira a transformação e o nível de detalhe que entregamos em cada projeto.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px]">
+                
+                <div class="group relative overflow-hidden rounded-lg md:col-span-2 md:row-span-2 reveal shadow-lg">
+                    <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Carro Esportivo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" onerror="this.parentElement.classList.add('img-loader')">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <h4 class="text-2xl font-bold text-white drop-shadow-lg">Vitrificação Full</h4>
+                        <p class="text-primary font-bold drop-shadow-md">BMW M Series</p>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-lg reveal shadow-lg" style="transition-delay: 100ms;">
+                    <img src="https://images.pexels.com/photos/3752194/pexels-photo-3752194.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Interior Detalhe" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" onerror="this.parentElement.classList.add('img-loader')">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-plus text-3xl text-primary drop-shadow-lg"></i>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-lg reveal shadow-lg" style="transition-delay: 200ms;">
+                    <img src="https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Rodas Detalhe" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" onerror="this.parentElement.classList.add('img-loader')">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-plus text-3xl text-primary drop-shadow-lg"></i>
+                    </div>
+                </div>
+
+                 <div class="group relative overflow-hidden rounded-lg md:row-span-2 reveal shadow-lg">
+                    <img src="https://images.pexels.com/photos/3311574/pexels-photo-3311574.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Polimento Lateral" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" onerror="this.parentElement.classList.add('img-loader')">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <h4 class="text-xl font-bold text-white drop-shadow-lg">Correção de Pintura</h4>
+                        <p class="text-primary font-bold drop-shadow-md">Black Piano</p>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-lg md:col-span-2 reveal shadow-lg" style="transition-delay: 100ms;">
+                    <img src="https://images.pexels.com/photos/6872566/pexels-photo-6872566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Lavagem Foam" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" onerror="this.parentElement.classList.add('img-loader')">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 p-6">
+                        <h4 class="text-xl font-bold text-white drop-shadow-lg">Snow Foam</h4>
+                        <p class="text-primary font-bold drop-shadow-md">Pré-lavagem</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-texture-lines border-t border-gray-800 relative overflow-hidden">
+        <div class="absolute -left-20 top-20 text-9xl text-gray-800 opacity-50 font-serif select-none pointer-events-none">"</div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-tech font-bold text-white">O Que Dizem Nossos Clientes</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full shadow-[0_0_10px_#00d4ff]"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-surface p-8 rounded-2xl border border-gray-800 shadow-lg hover:shadow-xl hover:border-gray-700 transition-all duration-300 reveal">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-400 mb-6 italic leading-relaxed">"Impressionante o nível de detalhe. Fiz a vitrificação no meu Civic e ele brilha mais do que quando tirei da concessionária. Recomendo demais!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-primary font-bold mr-3 border border-gray-700">R</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Rafael Mendes</h4>
+                            <p class="text-xs text-primary uppercase tracking-wider">Cliente desde 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface p-8 rounded-2xl border border-gray-800 shadow-lg hover:shadow-xl hover:border-gray-700 transition-all duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-400 mb-6 italic leading-relaxed">"O atendimento é diferenciado. Eles explicam tudo o que vão fazer no carro. A higienização interna salvou meus bancos de couro."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-primary font-bold mr-3 border border-gray-700">C</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Camila Torres</h4>
+                            <p class="text-xs text-primary uppercase tracking-wider">Cliente Verificada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface p-8 rounded-2xl border border-gray-800 shadow-lg hover:shadow-xl hover:border-gray-700 transition-all duration-300 reveal" style="transition-delay: 200ms;">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-400 mb-6 italic leading-relaxed">"Serviço rápido e eficiente. A oxi-sanitização tirou completamente o cheiro de cigarro que tinha no carro. Voltarei com certeza."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-primary font-bold mr-3 border border-gray-700">F</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Felipe Costa</h4>
+                            <p class="text-xs text-primary uppercase tracking-wider">Cliente Novo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-texture-grid border-t border-gray-900">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12 reveal">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm">Dúvidas Comuns</span>
+                <h2 class="text-3xl md:text-4xl font-tech font-bold mt-2 text-white">Perguntas Frequentes</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-surface border border-gray-800 rounded-lg overflow-hidden reveal hover:border-primary/50 transition-colors">
+                    <button onclick="toggleFAQ('faq1')" class="w-full flex justify-between items-center p-6 text-left focus:outline-none group">
+                        <span class="font-bold text-lg text-gray-200 group-hover:text-primary transition-colors">Quanto tempo leva uma lavagem detalhada?</span>
+                        <i id="icon-faq1" class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq1" class="hidden px-6 pb-6 text-gray-400 leading-relaxed border-t border-gray-800 pt-4">
+                        O tempo varia de acordo com o estado do veículo, mas geralmente uma lavagem detalhada leva entre 3 a 5 horas. Prezamos pela qualidade e não pela pressa, garantindo que cada canto do seu carro receba a devida atenção.
+                    </div>
+                </div>
+
+                <div class="bg-surface border border-gray-800 rounded-lg overflow-hidden reveal hover:border-primary/50 transition-colors" style="transition-delay: 100ms;">
+                    <button onclick="toggleFAQ('faq2')" class="w-full flex justify-between items-center p-6 text-left focus:outline-none group">
+                        <span class="font-bold text-lg text-gray-200 group-hover:text-primary transition-colors">É necessário agendar horário?</span>
+                        <i id="icon-faq2" class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq2" class="hidden px-6 pb-6 text-gray-400 leading-relaxed border-t border-gray-800 pt-4">
+                        Sim, trabalhamos preferencialmente com agendamento para garantir que seu veículo seja atendido no horário marcado sem filas. Você pode agendar facilmente clicando no botão do WhatsApp abaixo.
+                    </div>
+                </div>
+
+                <div class="bg-surface border border-gray-800 rounded-lg overflow-hidden reveal hover:border-primary/50 transition-colors" style="transition-delay: 200ms;">
+                    <button onclick="toggleFAQ('faq3')" class="w-full flex justify-between items-center p-6 text-left focus:outline-none group">
+                        <span class="font-bold text-lg text-gray-200 group-hover:text-primary transition-colors">Qual a diferença entre cera e vitrificação?</span>
+                        <i id="icon-faq3" class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq3" class="hidden px-6 pb-6 text-gray-400 leading-relaxed border-t border-gray-800 pt-4">
+                        A cera oferece proteção por algumas semanas e um bom brilho. A vitrificação é uma proteção cerâmica muito mais resistente (9H) que dura anos, protegendo contra riscos superficiais, raios UV e dejetos de pássaros, além de facilitar muito a limpeza.
+                    </div>
+                </div>
+
+                <div class="bg-surface border border-gray-800 rounded-lg overflow-hidden reveal hover:border-primary/50 transition-colors" style="transition-delay: 300ms;">
+                    <button onclick="toggleFAQ('faq4')" class="w-full flex justify-between items-center p-6 text-left focus:outline-none group">
+                        <span class="font-bold text-lg text-gray-200 group-hover:text-primary transition-colors">Vocês buscam o carro em casa (Leva e Traz)?</span>
+                        <i id="icon-faq4" class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq4" class="hidden px-6 pb-6 text-gray-400 leading-relaxed border-t border-gray-800 pt-4">
+                        Sim! Oferecemos serviço de Leva e Traz para a região com uma pequena taxa adicional. Consulte nossa equipe pelo WhatsApp para verificar a disponibilidade para o seu endereço.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agendamento" class="py-24 relative parallax flex items-center" style="background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1503376763036-066120622c74?q=80&w=2070&auto=format&fit=crop');">
+        
+        <div class="container mx-auto px-6 relative z-10">
+            
+            <div class="text-center mb-12 reveal">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm">Localização & Contato</span>
+                <h2 class="text-3xl md:text-5xl font-tech font-bold mt-2 text-white">Venha nos Conhecer</h2>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 rounded-3xl overflow-hidden bg-surface border border-gray-800 shadow-2xl reveal">
+                
+                <div class="lg:w-1/2 min-h-[400px] relative bg-gray-900">
+                     <iframe 
+                        src="https://maps.google.com/maps?q=Rua%20Ferr%C3%BAcio%20Brinatti%2C%20348%20Sul-americana%20-%20Vila%20Sul%20Americana%2C%20Carapicu%C3%ADba%20-%20SP%2C%2006394-050&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="absolute inset-0 w-full h-full">
+                    </iframe>
+                    <div class="absolute inset-0 pointer-events-none border-r border-gray-800"></div>
+                </div>
+
+                <div class="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    
+                    <div class="mb-8">
+                        <div class="flex items-start mb-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 mt-1 shrink-0 border border-primary/30">
+                                <i class="fas fa-map-pin"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Nosso Endereço</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    Rua Ferrúcio Brinatti, 348 Sul-americana<br>
+                                    Vila Sul Americana, Carapicuíba - SP<br>
+                                    CEP: 06394-050
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                         <div class="flex items-start mb-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 mt-1 shrink-0 border border-primary/30">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Contato</h3>
+                                <p class="text-gray-400 leading-relaxed">
+                                    (11) 95571-4556
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <div class="flex items-start mb-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 mt-1 shrink-0 border border-primary/30">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="w-full">
+                                <h3 class="text-xl font-bold text-white mb-3">Horário de Funcionamento</h3>
+                                <div class="space-y-2 text-sm text-gray-400">
+                                    <div class="flex justify-between border-b border-gray-800 pb-1">
+                                        <span>Segunda a Sexta</span>
+                                        <span class="text-white font-mono">08:00 – 18:00</span>
+                                    </div>
+                                    <div class="flex justify-between border-b border-gray-800 pb-1">
+                                        <span>Sábado</span>
+                                        <span class="text-white font-mono">08:00 – 18:00</span>
+                                    </div>
+                                    <div class="flex justify-between pb-1">
+                                        <span>Domingo</span>
+                                        <span class="text-white font-mono">08:00 – 17:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://www.google.com/maps/dir//Rua+Ferrúcio+Brinatti,+348+-+Vila+Sul+Americana,+Carapicuíba+-+SP,+06394-050" target="_blank" class="flex-1 bg-white text-black hover:bg-gray-200 font-bold py-4 rounded-lg uppercase tracking-wider transition-all text-center flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fas fa-route text-primary"></i>
+                            Rota no GPS
+                        </a>
+                        <a href="https://wa.me/5511955714556?text=Ol%C3%A1%2C%20vi%20o%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-lg uppercase tracking-wider transition-all btn-glow text-center flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(37,211,102,0.3)]">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            Agendar
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5511955714556?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:scale-110 hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] transition-all duration-300 flex items-center justify-center group">
+        <i class="fab fa-whatsapp text-4xl"></i>
+        <!-- Tooltip opcional (aparece no hover) -->
+        <span class="absolute right-full mr-4 bg-white text-black px-4 py-2 rounded-lg font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg pointer-events-none">
+            Fale Conosco
+        </span>
+    </a>
+
+    <footer class="bg-texture-carbon border-t border-gray-800 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                
+                <div>
+                    <h2 class="text-3xl font-tech font-bold text-white mb-6">CAR <span class="text-primary">WASH</span></h2>
+                    <p class="text-gray-400 leading-relaxed mb-6 text-sm">
+                        Referência em estética automotiva em Carapicuíba. Utilizamos produtos de alta performance e técnicas avançadas para garantir o brilho e a proteção que seu veículo merece.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:border-transparent transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-surface border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-black hover:border-white transition-all duration-300">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider border-l-4 border-primary pl-3">Links Rápidos</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors flex items-center group"><i class="fas fa-chevron-right text-[10px] mr-2 text-gray-600 group-hover:text-primary transition-colors"></i> Início</a></li>
+                        <li><a href="#catalogo" class="text-gray-400 hover:text-primary transition-colors flex items-center group"><i class="fas fa-chevron-right text-[10px] mr-2 text-gray-600 group-hover:text-primary transition-colors"></i> Serviços</a></li>
+                        <li><a href="#galeria" class="text-gray-400 hover:text-primary transition-colors flex items-center group"><i class="fas fa-chevron-right text-[10px] mr-2 text-gray-600 group-hover:text-primary transition-colors"></i> Galeria</a></li>
+                        <li><a href="#agendamento" class="text-gray-400 hover:text-primary transition-colors flex items-center group"><i class="fas fa-chevron-right text-[10px] mr-2 text-gray-600 group-hover:text-primary transition-colors"></i> Agendamento</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider border-l-4 border-primary pl-3">Serviços</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" onclick="selectService('Lavagem Detalhada')" class="text-gray-400 hover:text-primary transition-colors block">Lavagem Detalhada</a></li>
+                        <li><a href="#" onclick="selectService('Polimento Técnico')" class="text-gray-400 hover:text-primary transition-colors block">Polimento Técnico</a></li>
+                        <li><a href="#" onclick="selectService('Vitrificação 9H')" class="text-gray-400 hover:text-primary transition-colors block">Vitrificação 9H</a></li>
+                        <li><a href="#" onclick="selectService('Higienização Interna')" class="text-gray-400 hover:text-primary transition-colors block">Higienização Interna</a></li>
+                        <li><a href="#" onclick="selectService('Estética de Motor')" class="text-gray-400 hover:text-primary transition-colors block">Estética de Motor</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider border-l-4 border-primary pl-3">Contato</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded flex items-center justify-center bg-gray-800 text-primary mr-3 shrink-0">
+                                <i class="fas fa-map-marker-alt text-sm"></i>
+                            </div>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Rua Ferrúcio Brinatti, 348<br>
+                                Vila Sul Americana<br>
+                                Carapicuíba - SP
+                            </p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded flex items-center justify-center bg-gray-800 text-primary mr-3 shrink-0">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </div>
+                            <p class="text-gray-400 text-sm">(11) 95571-4556</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded flex items-center justify-center bg-gray-800 text-primary mr-3 shrink-0">
+                                <i class="far fa-envelope text-sm"></i>
+                            </div>
+                            <p class="text-gray-400 text-sm">contato@carwash.com.br</p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="https://wa.me/5511955714556" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-3 border border-primary/30 text-primary font-bold rounded hover:bg-primary hover:text-black transition-all duration-300 text-sm uppercase tracking-wide shadow-[0_0_15px_rgba(0,212,255,0.1)] hover:shadow-[0_0_20px_rgba(0,212,255,0.4)]">
+                                <i class="fab fa-whatsapp mr-2 text-lg"></i> Falar Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 bg-black/50 backdrop-blur-sm">
+            <div class="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 text-xs text-center md:text-left">
+                    &copy; 2025 Car Wash Estética Automotiva. Todos os direitos reservados.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-xs font-medium">
+                    <a href="#" class="text-gray-600 hover:text-white transition-colors">Termos de Uso</a>
+                    <a href="#" class="text-gray-600 hover:text-white transition-colors">Política de Privacidade</a>
+                    <a href="#" class="text-gray-600 hover:text-white transition-colors">Mapa do Site</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        };
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+            observer.observe(el);
+        });
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        function selectService(serviceName) {
+            const phoneNumber = "5511955714556";
+            const message = `Olá! Gostaria de mais informações e agendar o serviço: ${serviceName}`;
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(url, '_blank');
+        }
+
+        function toggleFAQ(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                content.classList.add('block');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
