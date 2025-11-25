@@ -231,67 +231,252 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg">
                     <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
-                        <i class="fas fa-shower"></i>
+                        <i class="fas fa-tint"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Lavagem Detalhada</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Limpeza profunda de pintura, caixas de roda, emblemas e cantos. Uso de shampoos neutros e luvas de microfibra.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Ducha Premium</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Lavagem rápida e eficiente com foco na remoção de sujeira leve e acabamento externo.</p>
                     <ul class="text-sm text-gray-400 mb-6 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Pré-lavagem Snow Foam</li>
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Descontaminação ferrosa</li>
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Secagem sem atrito</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Pré-lavagem e lavagem externa</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Limpeza de rodas e caixas de roda</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Secagem com microfibra</li>
                     </ul>
+                    <div class="text-gray-500 text-xs mb-4"><i class="far fa-clock mr-1"></i> Tempo médio: 40min</div>
                     <div class="flex justify-between items-center border-t border-gray-800 pt-6">
-                        <span class="text-2xl font-bold text-white">R$ 120<small class="text-sm text-gray-500">,00</small></span>
-                        <button onclick="selectService('Lavagem Detalhada')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500">A partir de</span>
+                            <span class="text-2xl font-bold text-white">R$ 30<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Ducha Premium')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
                     </div>
                 </div>
 
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 100ms;">
                     <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
-                        <i class="fas fa-gem"></i>
+                        <i class="fas fa-motorcycle"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Polimento Técnico</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Correção da pintura removendo riscos, swirls e hologramas. Devolve o brilho profundo de showroom.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Especial Motos</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Tratamento exclusivo para motocicletas, desde duchas rápidas até detalhamento completo.</p>
                     <ul class="text-sm text-gray-400 mb-6 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Análise de espessura</li>
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Corte, refino e lustro</li>
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Proteção selante</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Ducha Premium e Lavagem Completa</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Estética detalhada de motor e carenagem</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Polimento técnico especializado</li>
                     </ul>
+                    <div class="text-gray-500 text-xs mb-4"><i class="far fa-clock mr-1"></i> Varia conforme serviço</div>
                     <div class="flex justify-between items-center border-t border-gray-800 pt-6">
-                        <span class="text-2xl font-bold text-white">R$ 450<small class="text-sm text-gray-500">,00</small></span>
-                        <button onclick="selectService('Polimento Técnico')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500">A partir de</span>
+                            <span class="text-2xl font-bold text-white">R$ 20<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Lavagens Moto')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
                     </div>
                 </div>
 
-                <div class="service-card bg-gradient-to-br from-surface to-blue-900/20 p-8 rounded-xl border border-primary/30 transition-all duration-300 reveal shadow-lg" style="transition-delay: 200ms;">
-                    <div class="absolute top-0 right-0 bg-primary text-black text-xs font-bold px-3 py-1 rounded-bl-lg uppercase shadow-sm">Mais Popular</div>
-                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700 shadow-lg shadow-primary/10">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-shower"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Vitrificação 9H</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">A proteção máxima para seu veículo. Camada cerâmica que protege contra raios UV, dejetos e riscos.</p>
-                    <ul class="text-sm text-gray-300 mb-6 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Durabilidade de até 3 anos</li>
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Hidrofobia extrema</li>
-                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Facilidade de limpeza</li>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Lavagem Simples</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Limpeza completa e eficiente, ideal para a manutenção semanal do seu veículo.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Pré-lavagem e Lavagem externa</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Aspiração e Limpeza bactericida interna</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Lustro com cera protetora</li>
                     </ul>
-                    <div class="flex justify-between items-center border-t border-gray-700 pt-6">
-                        <span class="text-2xl font-bold text-primary">R$ 890<small class="text-sm text-gray-400">,00</small></span>
-                        <button onclick="selectService('Vitrificação 9H')" class="bg-primary text-black px-4 py-2 rounded-md hover:bg-white font-bold text-sm uppercase transition-all shadow-[0_0_10px_rgba(0,212,255,0.4)]">Selecionar</button>
+                    <div class="text-gray-500 text-xs mb-4"><i class="far fa-clock mr-1"></i> Tempo médio: 1h40min</div>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500">A partir de</span>
+                            <span class="text-2xl font-bold text-white">R$ 60<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Lavagem Simples')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
                     </div>
                 </div>
 
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg">
                     <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Lavagem Completa</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Uma limpeza detalhada que abrange todos os cantos do veículo, incluindo aspiração profunda.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Limpeza de emblemas e cantos</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Limpeza profunda dos vidros</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Proteção de plásticos internos/externos</li>
+                    </ul>
+                    <div class="text-gray-500 text-xs mb-4"><i class="far fa-clock mr-1"></i> Tempo médio: 2h20min</div>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500">A partir de</span>
+                            <span class="text-2xl font-bold text-white">R$ 110<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Lavagem Completa')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 right-0 bg-primary text-black text-xs font-bold px-3 py-1 rounded-bl-lg uppercase shadow-sm">Recomendado</div>
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700 shadow-lg shadow-primary/10">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Estética Detalhada</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">O pacote premium. Inclui todos os processos da lavagem completa mais descontaminação e limpeza de motor.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Descontaminação de pintura e Cera Cleaner</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Limpeza do Motor a seco</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Higienização detalhada (Bancos/Teto/Carpete)</li>
+                    </ul>
+                    <div class="text-gray-500 text-xs mb-4"><i class="far fa-clock mr-1"></i> Tempo médio: 3h50min</div>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-500">A partir de</span>
+                            <span class="text-2xl font-bold text-white">R$ 220<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Estética Detalhada')" class="bg-primary text-black px-4 py-2 rounded-md hover:bg-white font-bold text-sm uppercase transition-all shadow-[0_0_10px_rgba(0,212,255,0.4)]">Selecionar</button>
+                    </div>
+                </div>
+
+                <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
                         <i class="fas fa-couch"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 text-white">Higienização Interna</h3>
-                    <p class="text-gray-400 mb-6 leading-relaxed">Limpeza e hidratação de bancos de couro, higienização de tecidos, teto e carpetes com vapor.</p>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Renovação total do interior. Elimina ácaros, fungos, bactérias e odores fortes.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Limpeza técnica de bancos (tecido/couro)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Limpeza de teto, carpete e porta malas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Aromatização especial</li>
+                    </ul>
                     <div class="flex justify-between items-center border-t border-gray-800 pt-6">
-                        <span class="text-2xl font-bold text-white">R$ 300<small class="text-sm text-gray-500">,00</small></span>
-                        <button onclick="selectService('Higienização Interna')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                        <div class="flex flex-col">
+                             <span class="text-xs text-gray-500">A partir de</span>
+                             <span class="text-2xl font-bold text-white">R$ 300<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Higienização Interna Completa')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Higienização Parcial</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Ideal para quem deseja higienizar apenas uma parte específica do carro em caso de acidentes ou sujeira localizada.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Foco em bancos, teto ou carpete</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Limpeza técnica localizada</li>
+                    </ul>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <div class="flex flex-col">
+                             <span class="text-xs text-gray-500">De R$ 200 a</span>
+                             <span class="text-2xl font-bold text-white">R$ 350<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Higienização Interna por Parte')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Polimento Comercial</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Remove pequenos riscos superficiais e oxidações leves, devolvendo o brilho à pintura.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Remove até 65% dos riscos e marcas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Melhora significativa do brilho</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Ideal como pré-tratamento</li>
+                    </ul>
+                    <div class="text-gray-500 text-xs mb-4"><i class="far fa-clock mr-1"></i> Tempo: 6 a 9 horas</div>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <div class="flex flex-col">
+                             <span class="text-xs text-gray-500">A partir de</span>
+                             <span class="text-2xl font-bold text-white">R$ 400<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Polimento Comercial')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Polimento Técnico</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Tratamento de correção máxima para pinturas danificadas. Processo em 3 etapas: Corte, Refino e Lustro.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Remoção de até 90% dos riscos</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Corte pesado para riscos profundos</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Brilho e profundidade de cor máximos</li>
+                    </ul>
+                    <div class="text-gray-500 text-xs mb-4"><i class="far fa-clock mr-1"></i> Tempo: 2 a 3 dias</div>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                         <div class="flex flex-col">
+                             <span class="text-xs text-gray-500">A partir de</span>
+                             <span class="text-2xl font-bold text-white">R$ 1.200<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Polimento Técnico')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                <div class="service-card bg-gradient-to-br from-surface to-blue-900/20 p-8 rounded-xl border border-primary/30 transition-all duration-300 reveal shadow-lg">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700 shadow-lg shadow-primary/10">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Vitrificação 9H</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Proteção cerâmica de alta resistência para pintura, vidros e plásticos. Efeito de pintura molhada.</p>
+                    <ul class="text-sm text-gray-300 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Proteção contra UV e chuva ácida</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Inclui polimento técnico leve</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Toque super liso e hidrofobia</li>
+                    </ul>
+                    <div class="text-gray-500 text-xs mb-4"><i class="far fa-clock mr-1"></i> Tempo: 8 a 12 horas</div>
+                    <div class="flex justify-between items-center border-t border-gray-700 pt-6">
+                        <div class="flex flex-col">
+                             <span class="text-xs text-gray-500">A partir de</span>
+                             <span class="text-2xl font-bold text-primary">R$ 500<small class="text-sm text-gray-400">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Vitrificação 9H')" class="bg-primary text-black px-4 py-2 rounded-md hover:bg-white font-bold text-sm uppercase transition-all shadow-[0_0_10px_rgba(0,212,255,0.4)]">Selecionar</button>
+                    </div>
+                </div>
+
+                <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Revitalização de Farol</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Polimento técnico dos faróis para remoção de amarelamentos e opacidades.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Remove aspecto envelhecido</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Recupera a luminosidade</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Finalização com proteção UV</li>
+                    </ul>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                         <div class="flex flex-col">
+                             <span class="text-xs text-gray-500">De R$ 120 a</span>
+                             <span class="text-2xl font-bold text-white">R$ 220<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Revitalização de Farol')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
+                    </div>
+                </div>
+
+                <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
+                        <i class="fas fa-fill-drip"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Restauração de Plásticos</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Recuperação e proteção para plásticos ressecados ou esbranquiçados.</p>
+                    <ul class="text-sm text-gray-400 mb-6 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Hidratação interna e externa</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Vitrificação para longa duração</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Proteção contra raios UV</li>
+                    </ul>
+                    <div class="flex justify-between items-center border-t border-gray-800 pt-6">
+                        <div class="flex flex-col">
+                             <span class="text-xs text-gray-500">De R$ 60 a</span>
+                             <span class="text-2xl font-bold text-white">R$ 150<small class="text-sm text-gray-500">,00</small></span>
+                        </div>
+                        <button onclick="selectService('Restauração de Plásticos')" class="text-primary hover:text-white font-bold text-sm uppercase transition-colors">Selecionar</button>
                     </div>
                 </div>
 
@@ -583,10 +768,8 @@
         </div>
     </section>
 
-    <!-- Botão Flutuante WhatsApp -->
     <a href="https://wa.me/5511955714556?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:scale-110 hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] transition-all duration-300 flex items-center justify-center group">
         <i class="fab fa-whatsapp text-4xl"></i>
-        <!-- Tooltip opcional (aparece no hover) -->
         <span class="absolute right-full mr-4 bg-white text-black px-4 py-2 rounded-lg font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg pointer-events-none">
             Fale Conosco
         </span>
