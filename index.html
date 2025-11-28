@@ -20,9 +20,9 @@
                         tech: ['Orbitron', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#00d4ff',
+                        primary: '#FF6700',
                         secondary: '#111111',
-                        accent: '#ff003c',
+                        accent: '#ffffff',
                         surface: '#1a1a1a',
                         dark: '#000000',
                     }
@@ -43,7 +43,7 @@
         }
         #progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #00d4ff, #005bea);
+            background: linear-gradient(90deg, #FF6700, #ff9100); 
             width: 0%;
             transition: width 0.1s ease-out;
         }
@@ -59,7 +59,7 @@
             border-radius: 5px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #00d4ff;
+            background: #FF6700; 
         }
 
         .parallax {
@@ -91,12 +91,12 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px -10px rgba(0, 212, 255, 0.15);
-            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(255, 103, 0, 0.15); 
+            border-color: rgba(255, 103, 0, 0.3);
         }
         
         .btn-glow:hover {
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+            box-shadow: 0 0 20px rgba(255, 103, 0, 0.6); 
         }
 
         .img-loader {
@@ -150,16 +150,21 @@
     </div>
 
     <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-800 shadow-lg transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-tech font-bold tracking-wider text-white">
-                CAR <span class="text-primary">WASH</span>
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="https://i.ibb.co/Q7d6wt4T/Logo-CARWASH-2-1.png" alt="Car Wash Logo" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+                <div class="flex flex-col justify-center leading-none">
+                    <span class="font-tech font-bold text-xl text-white tracking-wider group-hover:text-primary transition-colors">LAVA RÁPIDO</span>
+                    <span class="font-sans text-[10px] text-gray-400 tracking-[0.2em] uppercase font-bold group-hover:text-white transition-colors">Estética Automotiva</span>
+                </div>
             </a>
             
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#home" class="text-gray-300 hover:text-primary transition-colors text-sm uppercase tracking-widest font-semibold">Início</a>
                 <a href="#catalogo" class="text-gray-300 hover:text-primary transition-colors text-sm uppercase tracking-widest font-semibold">Serviços</a>
                 <a href="#galeria" class="text-gray-300 hover:text-primary transition-colors text-sm uppercase tracking-widest font-semibold">Galeria</a>
-                <a href="#agendamento" class="px-6 py-2 bg-primary text-black font-bold rounded-full hover:bg-white transition-all btn-glow shadow-[0_0_15px_rgba(0,212,255,0.3)]">Agendar</a>
+                <a href="#agendamento" class="px-6 py-2 bg-primary text-white font-bold rounded-full hover:bg-white hover:text-black transition-all btn-glow shadow-[0_0_15px_rgba(255,103,0,0.3)]">Agendar</a>
             </div>
 
             <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
@@ -190,7 +195,7 @@
                 <a href="#catalogo" class="px-8 py-4 bg-transparent border border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all shadow-lg">
                     Ver Catálogo
                 </a>
-                <a href="#agendamento" class="px-8 py-4 bg-primary text-black font-bold uppercase tracking-wider hover:bg-white transition-all btn-glow shadow-lg shadow-primary/20">
+                <a href="#agendamento" class="px-8 py-4 bg-primary text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all btn-glow shadow-lg shadow-primary/20">
                     Fazer Orçamento
                 </a>
             </div>
@@ -317,7 +322,7 @@
                 </div>
 
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg" style="transition-delay: 100ms;">
-                    <div class="absolute top-0 right-0 bg-primary text-black text-xs font-bold px-3 py-1 rounded-bl-lg uppercase shadow-sm">Recomendado</div>
+                    <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase shadow-sm">Recomendado</div>
                     <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700 shadow-lg shadow-primary/10">
                         <i class="fas fa-star"></i>
                     </div>
@@ -334,7 +339,7 @@
                             <span class="text-xs text-gray-500">A partir de</span>
                             <span class="text-2xl font-bold text-white">R$ 220<small class="text-sm text-gray-500">,00</small></span>
                         </div>
-                        <button onclick="selectService('Estética Detalhada')" class="bg-primary text-black px-4 py-2 rounded-md hover:bg-white font-bold text-sm uppercase transition-all shadow-[0_0_10px_rgba(0,212,255,0.4)]">Selecionar</button>
+                        <button onclick="selectService('Estética Detalhada')" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-white hover:text-black font-bold text-sm uppercase transition-all shadow-[0_0_10px_rgba(255,103,0,0.4)]">Selecionar</button>
                     </div>
                 </div>
 
@@ -436,7 +441,7 @@
                              <span class="text-xs text-gray-500">A partir de</span>
                              <span class="text-2xl font-bold text-primary">R$ 500<small class="text-sm text-gray-400">,00</small></span>
                         </div>
-                        <button onclick="selectService('Vitrificação 9H')" class="bg-primary text-black px-4 py-2 rounded-md hover:bg-white font-bold text-sm uppercase transition-all shadow-[0_0_10px_rgba(0,212,255,0.4)]">Selecionar</button>
+                        <button onclick="selectService('Vitrificação 9H')" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-white hover:text-black font-bold text-sm uppercase transition-all shadow-[0_0_10px_rgba(255,103,0,0.4)]">Selecionar</button>
                     </div>
                 </div>
 
@@ -570,7 +575,7 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-12 reveal">
                 <h2 class="text-3xl md:text-4xl font-tech font-bold text-white">O Que Dizem Nossos Clientes</h2>
-                <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full shadow-[0_0_10px_#00d4ff]"></div>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full shadow-[0_0_10px_#ff6700]"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -846,7 +851,7 @@
                             <p class="text-gray-400 text-sm">contato@carwash.com.br</p>
                         </div>
                         <div class="mt-6">
-                            <a href="https://wa.me/5511955714556" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-3 border border-primary/30 text-primary font-bold rounded hover:bg-primary hover:text-black transition-all duration-300 text-sm uppercase tracking-wide shadow-[0_0_15px_rgba(0,212,255,0.1)] hover:shadow-[0_0_20px_rgba(0,212,255,0.4)]">
+                            <a href="https://wa.me/5511955714556" target="_blank" class="inline-flex items-center justify-center w-full px-4 py-3 border border-primary/30 text-primary font-bold rounded hover:bg-primary hover:text-black transition-all duration-300 text-sm uppercase tracking-wide shadow-[0_0_15px_rgba(255,103,0,0.1)] hover:shadow-[0_0_20px_rgba(255,103,0,0.4)]">
                                 <i class="fab fa-whatsapp mr-2 text-lg"></i> Falar Agora
                             </a>
                         </div>
