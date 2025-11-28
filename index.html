@@ -20,7 +20,7 @@
                         tech: ['Orbitron', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#FF6700',
+                        primary: '#FF6700', 
                         secondary: '#111111',
                         accent: '#ffffff',
                         surface: '#1a1a1a',
@@ -43,7 +43,7 @@
         }
         #progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #FF6700, #ff9100); 
+            background: linear-gradient(90deg, #FF6700, #ff9100);
             width: 0%;
             transition: width 0.1s ease-out;
         }
@@ -62,11 +62,19 @@
             background: #FF6700; 
         }
 
+        
         .parallax {
-            background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            background-attachment: scroll; 
+        }
+
+        
+        @media (min-width: 768px) {
+            .parallax {
+                background-attachment: fixed;
+            }
         }
 
         .reveal {
@@ -180,8 +188,7 @@
         </div>
     </nav>
 
-    <header id="home" class="relative h-screen flex items-center justify-center parallax" 
-        style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg');">
+    <header id="home" class="relative h-screen flex items-center justify-center parallax" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg');">
         
         <div class="text-center px-4 reveal">
             <h2 class="text-primary font-bold tracking-widest mb-4 uppercase text-sm md:text-base bg-black/30 backdrop-blur-sm inline-block px-4 py-1 rounded-full border border-primary/20">Estética Automotiva de Alto Padrão</h2>
@@ -947,4 +954,3 @@
     </script>
 </body>
 </html>
-
