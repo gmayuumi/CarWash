@@ -195,7 +195,7 @@
             border-color: #FF6700;
         }
 
-       
+        /* Estilo para os logos das marcas em tons de cinza com hover colorido */
         .brand-logo {
             filter: grayscale(100%) opacity(0.6);
             transition: all 0.3s ease;
@@ -251,26 +251,27 @@
         </div>
     </nav>
 
-   
-    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <!-- HERO SECTION - MODIFICADO PARA RESPONSIVIDADE -->
+    <!-- Alterado de h-screen para min-h-screen e adicionado padding top (pt-32) para evitar que o header cubra o conteúdo -->
+    <header id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-40 pb-20 md:pt-32">
         
-       
+        <!-- Background Grid Container -->
         <div class="absolute inset-0 w-full h-full grid grid-cols-1 md:grid-cols-3 z-0">
             <div class="hidden md:block relative h-full w-full border-r border-white/10">
-                <img src="g2.jpg" alt="Detail Left" class="w-full h-full object-cover opacity-80">
+                <img src="g2.jpg" alt="Detail Left" class="w-full h-full object-cover opacity-80" onerror="this.style.display='none'">
             </div>
             <div class="relative h-full w-full">
-                <img src="g1.jpg" alt="Hero Center" class="w-full h-full object-cover">
+                <img src="g1.jpg" alt="Hero Center" class="w-full h-full object-cover" onerror="this.src='https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg'">
             </div>
             <div class="hidden md:block relative h-full w-full border-l border-white/10">
-                <img src="g3.jpg" alt="Detail Right" class="w-full h-full object-cover opacity-80">
+                <img src="g3.jpg" alt="Detail Right" class="w-full h-full object-cover opacity-80" onerror="this.style.display='none'">
             </div>
         </div>
 
-       
+        <!-- Dark Overlay Gradient -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/75 to-black/90 md:from-black/80 md:via-black/50 md:to-black/80 z-10"></div>
         
-       
+        <!-- Text Content -->
         <div class="text-center px-4 reveal w-full max-w-4xl mx-auto flex flex-col items-center relative z-20">
             
             <h1 class="text-5xl md:text-7xl font-tech font-bold mb-6 leading-tight text-white drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
@@ -337,14 +338,10 @@
     </header>
 
     <section class="py-12 bg-texture-lines border-y border-gray-800 shadow-sm">
-        <div class="container mx-auto px-6 mb-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="container mx-auto px-6 mb-10 grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
             <div class="reveal">
                 <h3 class="text-4xl font-tech font-bold text-white">350+</h3>
                 <p class="text-gray-400 text-sm mt-2 uppercase font-semibold">Carros Atendidos</p>
-            </div>
-            <div class="reveal" style="transition-delay: 100ms;">
-                <h3 class="text-4xl font-tech font-bold text-primary">3</h3>
-                <p class="text-gray-400 text-sm mt-2 uppercase font-semibold">Anos de Mercado</p>
             </div>
             <div class="reveal" style="transition-delay: 200ms;">
                 <h3 class="text-4xl font-tech font-bold text-white">100%</h3>
@@ -356,7 +353,7 @@
             </div>
         </div>
 
-        
+        <!-- Marcas Parceiras -->
         <div class="container mx-auto px-6 pt-8 border-t border-gray-800 reveal">
             <p class="text-center text-gray-500 uppercase tracking-widest text-xs font-bold mb-8">Produtos Premium que Utilizamos</p>
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-80">
@@ -365,6 +362,8 @@
                 <img src="logo-dubboyz.png" alt="Dubboyz" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=DUBBOYZ&font=montserrat'">
                 <img src="logo-cadillac.png" alt="Cadillac" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=CADILLAC&font=montserrat'">
                 <img src="logo-lincoln.png" alt="Lincoln" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=LINCOLN&font=montserrat'">
+                
+                <!-- Novas Marcas Adicionadas -->
                 <img src="logo-meguiars.png" alt="Meguiar's" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=MEGUIARS&font=montserrat'">
                 <img src="logo-soft99.png" alt="Soft99" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=SOFT99&font=montserrat'">
                 <img src="logo-menzerna.png" alt="Menzerna" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=MENZERNA&font=montserrat'">
@@ -381,7 +380,7 @@
                 <h2 class="text-4xl md:text-5xl font-tech font-bold mt-2 text-white">Catálogo de Serviços</h2>
             </div>
 
-           
+            <!-- CATEGORY FILTERS -->
             <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
                 <button onclick="filterServices('lavagem')" class="filter-btn active px-6 py-3 rounded-full border border-gray-700 bg-surface hover:bg-gray-800 text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2">
                     <i class="fas fa-car text-primary"></i> Lavagens
@@ -399,7 +398,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
                 
-               
+                <!-- 01 Ducha Premium -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between" data-category="lavagem">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -426,7 +425,7 @@
                     </div>
                 </div>
 
-                
+                <!-- 02 Motos -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="motos">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -447,7 +446,7 @@
                     </div>
                 </div>
 
-              
+                <!-- 03 Lavagem Simples -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between" data-category="lavagem">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -476,7 +475,7 @@
                     </div>
                 </div>
 
-               
+                <!-- 04 Lavagem Completa -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between" data-category="lavagem">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -506,7 +505,7 @@
                     </div>
                 </div>
 
-               
+                <!-- 05 Estética Detalhada -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="interna">
                     <div>
                         <div class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase shadow-sm">Recomendado</div>
@@ -536,7 +535,7 @@
                     </div>
                 </div>
 
-               
+                <!-- 06 Polimento Comercial -->
                  <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="polimento">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -561,7 +560,7 @@
                     </div>
                 </div>
 
-              
+                <!-- 07 Polimento Técnico -->
                  <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="polimento">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -587,7 +586,7 @@
                     </div>
                 </div>
 
-             
+                <!-- 08 Revitalização de Farol -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="polimento">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -611,7 +610,7 @@
                     </div>
                 </div>
 
-                
+                <!-- 09 Higienização Interna Completa -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="interna">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -637,7 +636,7 @@
                     </div>
                 </div>
 
-              
+                <!-- 12 Vitrificação de Rodas -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="polimento">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -662,7 +661,7 @@
                     </div>
                 </div>
 
-             
+                <!-- 13 Vitrificação 9H -->
                 <div class="service-card bg-gradient-to-br from-surface to-blue-900/20 p-8 rounded-xl border border-primary/30 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="polimento">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700 shadow-lg shadow-primary/10">
@@ -693,7 +692,7 @@
                     </div>
                 </div>
 
-                
+                <!-- 14 Restauração de Plásticos -->
                 <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="polimento">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -716,7 +715,7 @@
                     </div>
                 </div>
 
-                
+                 <!-- Serviços Extras -->
                  <div class="service-card bg-surface p-8 rounded-xl border border-gray-800 transition-all duration-300 reveal shadow-lg flex flex-col justify-between hidden" data-category="interna">
                     <div>
                         <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6 text-primary text-2xl border border-gray-700">
@@ -1266,12 +1265,12 @@
             const allServices = document.querySelectorAll('#services-grid .service-card');
             const buttons = document.querySelectorAll('.filter-btn');
             
-            
+            // Atualizar botões ativos
             buttons.forEach(btn => {
                 if(btn.textContent.toLowerCase().includes(category === 'lavagem' ? 'lavagens' : category)) {
                     btn.classList.add('active');
                 } else if(category === 'motos' && btn.textContent.toLowerCase().includes('motos')) {
-                 
+                    // Specific check for motos to avoid confusion
                     btn.classList.add('active');
                 } else if(category === 'polimento' && btn.textContent.toLowerCase().includes('polimento')) {
                     btn.classList.add('active');
@@ -1282,11 +1281,11 @@
                 }
             });
 
-            
+            // Filtrar cards
             allServices.forEach(card => {
                 if (card.getAttribute('data-category') === category) {
                     card.classList.remove('hidden');
-                   
+                    // Pequena animação ao mostrar
                     card.classList.add('reveal');
                     setTimeout(() => card.classList.add('active'), 50);
                 } else {
@@ -1298,4 +1297,3 @@
     </script>
 </body>
 </html>
-
