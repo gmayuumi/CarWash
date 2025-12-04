@@ -195,13 +195,24 @@
             border-color: #FF6700;
         }
 
-        .brand-logo {
-            filter: grayscale(100%) opacity(0.6);
-            transition: all 0.3s ease;
+        /* Estilo base das marcas (cor original) */
+        .brand-img {
+            opacity: 0.7;
+            transition: all 0.4s ease;
         }
-        .brand-logo:hover {
-            filter: grayscale(0%) opacity(1);
+        
+        .brand-img:hover {
+            opacity: 1;
             transform: scale(1.05);
+        }
+
+        /* Classe específica para tornar logos brancos (Protelim e Cadillac) */
+        .filter-white {
+            filter: brightness(0) invert(1);
+        }
+        
+        .filter-white:hover {
+            filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(255,255,255,0.5));
         }
 
     </style>
@@ -348,19 +359,34 @@
         </div>
 
         <div class="container mx-auto px-6 pt-8 border-t border-gray-800 reveal">
-            <p class="text-center text-gray-500 uppercase tracking-widest text-xs font-bold mb-8">Produtos Premium que Utilizamos</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-80">
-                <img src="logo-vonixx.png" alt="Vonixx" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=VONIXX&font=montserrat'">
-                <img src="logo-protelim.png" alt="Protelim" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=PROTELIM&font=montserrat'">
-                <img src="logo-dubboyz.png" alt="Dubboyz" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=DUBBOYZ&font=montserrat'">
-                <img src="logo-cadillac.png" alt="Cadillac" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=CADILLAC&font=montserrat'">
-                <img src="logo-lincoln.png" alt="Lincoln" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=LINCOLN&font=montserrat'">
+            <p class="text-center text-gray-500 uppercase tracking-widest text-xs font-bold mb-12">Produtos Premium que Utilizamos</p>
+            
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
                 
-                <img src="logo-meguiars.png" alt="Meguiar's" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=MEGUIARS&font=montserrat'">
-                <img src="logo-soft99.png" alt="Soft99" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=SOFT99&font=montserrat'">
-                <img src="logo-menzerna.png" alt="Menzerna" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=MENZERNA&font=montserrat'">
-                <img src="logo-autoamerica.png" alt="Autoamerica" class="h-8 md:h-10 w-auto brand-logo object-contain" onerror="this.src='https://placehold.co/120x40/1a1a1a/666?text=AUTOAMERICA&font=montserrat'">
+               
+                <div class="w-32 h-20 flex items-center justify-center">
+                    <img src="https://i.ibb.co/pBwky46j/protelim.webp" alt="Protelim" class="brand-img filter-white max-w-full max-h-full object-contain" onerror="this.style.display='none'">
+                </div>
+                
+               
+                <div class="w-32 h-20 flex items-center justify-center">
+                    <img src="https://i.ibb.co/HpKhdSGQ/dubboyzz.webp" alt="Dub Boyz" class="brand-img max-w-full max-h-full object-contain" onerror="this.src='https://placehold.co/120x60/222/999?text=DUBBOYZ&font=montserrat'">
+                </div>
+                
+               
+                <div class="w-32 h-20 flex items-center justify-center">
+                    <img src="https://i.ibb.co/mrdRq4QM/cadillac.png" alt="Cadillac" class="brand-img filter-white max-w-full max-h-full object-contain" onerror="this.style.display='none'">
+                </div>
+                
+               
+                <div class="w-32 h-20 flex items-center justify-center">
+                     <img src="https://i.ibb.co/rRrcNyZQ/lincoln.png" alt="Lincoln" class="brand-img max-w-full max-h-full object-contain" onerror="this.style.display='none'">
+                </div>
             </div>
+
+            <p class="text-center text-gray-600 text-xs mt-8 font-medium tracking-wide">
+                <span class="opacity-50">+</span> Entre outras marcas referência no mercado global.
+            </p>
         </div>
     </section>
 
